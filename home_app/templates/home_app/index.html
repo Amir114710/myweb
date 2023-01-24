@@ -10,8 +10,9 @@ Home
     <!-- About -->
     <div class="pb-0 pb-sm-2">
         <h1 class="title title--h1 first-title title__separate">درباره ی من</h1>
-        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
-        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد</p>
+        {% for content in about %}
+        <p>{{content.about_content}}</p>
+        {% endfor %}
     </div>
     
     <!-- What -->
@@ -19,48 +20,17 @@ Home
         <h2 class="title title--h3">کاری که انجام می دهم</h2>
         <div class="row">
             <!-- Case Item -->
+            {% for item in activity %}
             <div class="col-12 col-lg-6">
                 <div class="case-item">
-                    <img class="case-item__icon" src="{% static "icons/icon-design.svg" %}" alt="" />
+                    <img class="case-item__icon" src="{{item.image.url}}" alt="" />
                     <div>
-                        <h3 class="title title--h4">طراحی وب</h3>
-                        <p class="case-item__caption">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                        <h3 class="title title--h4">{{item.title}}</h3>
+                        <p class="case-item__caption">{{item.content}}</p>
                     </div>	
                 </div>
             </div>
-            
-            <!-- Case Item -->
-            <div class="col-12 col-lg-6">
-                <div class="case-item">
-                    <img class="case-item__icon" src="{% static "icons/icon-dev.svg" %}" alt="" />
-                    <div>
-                        <h3 class="title title--h4">توسعه وب</h3>
-                        <p class="case-item__caption">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Case Item -->
-            <div class="col-12 col-lg-6">
-                <div class="case-item">
-                    <img class="case-item__icon" src="{% static "icons/icon-app.svg" %}" alt="" />
-                    <div>
-                        <h3 class="title title--h4">برنامه های موبایل</h3>
-                        <p class="case-item__caption">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Case Item -->
-            <div class="col-12 col-lg-6">
-                <div class="case-item">
-                    <img class="case-item__icon" src="{% static "icons/icon-photo.svg" %}" alt="" />
-                    <div>
-                        <h3 class="title title--h4">عکاسی</h3>
-                        <p class="case-item__caption">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>	
     </div>
     

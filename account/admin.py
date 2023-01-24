@@ -4,25 +4,26 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
+
 from .models import User
 
 
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
-    password1 = forms.CharField(label='گذرواژه', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='تکرار گذرواژه', widget=forms.PasswordInput)
+    password1 = forms.CharField(label='گذر واژه', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='تکرار گذر واژه', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ('phone',)
+        fields = ('username', 'phone')
 
     def clean_password2(self):
         # Check that the two password entries match
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise ValidationError("پسورد ها مساوی نیستند")
+            raise ValidationError("گذرواژه ها مساوی نیستند")
         return password2
 
     def save(self, commit=True):
@@ -43,7 +44,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ( 'phone' ,'email', 'password', 'is_active', 'is_admin')
+        fields = ('username', 'password', 'fullname', 'is_active', 'is_admin')
 
 
 class UserAdmin(BaseUserAdmin):
@@ -54,11 +55,11 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('phone','email','image','Full_name','area_of_activity','email','is_admin','is_active')
+    list_display = ('username', 'phone', 'email' , 'is_admin' , 'is_active')
     list_filter = ('is_admin','is_active')
     fieldsets = (
-        (None, {'fields': ('phone','password')}),
-        ('اطلاعات شخصی', {'fields': ('image','Full_name','area_of_activity','email','birth_place','date_of_birth','instagram_address')}),
+        (None, {'fields': ('username' , 'password')}),
+        ('ویژگی ها', {'fields': ('email', 'phone' , 'earea_activity', 'fullname'  ,'date_of_birth' , 'birth_place' , 'instagram' , 'image')}),
         ('دسترسی ها', {'fields': ('is_admin','is_active')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
@@ -66,12 +67,14 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('phone' ,'email', 'password1', 'password2'),
+            'fields': ('username', 'fullname', 'password1', 'password2'),
         }),
     )
-    search_fields = ('phone',)
-    ordering = ('phone',)
+    search_fields = ('username',)
+    ordering = ('username',)
     filter_horizontal = ()
+
+
 # Now register the new UserAdmin...
 admin.site.register(User, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,

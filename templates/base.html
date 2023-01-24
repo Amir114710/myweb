@@ -69,10 +69,10 @@
 					    <img class="header__photo-img" src="{{data.image.url}}" alt="Ronald Robertson">
 					</div>
 					<div class="header__base-info">
-					    <h4 class="title titl--h4">{{data.Full_name}}</h4>
-						<div class="status">{{data.area_of_activity}}</div>
+					    <h4 class="title titl--h4">{{data.fullname}}</h4>
+						<div class="status">{{data.earea_activity}}</div>
 						<ul class="header__social">
-							<li><a href="{{data.instagram_address}}"><i class="font-icon icon-instagram1"></i></a></li>
+							<li><a href="{{data.instagram}}"><i class="font-icon icon-instagram1"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -97,7 +97,7 @@
 							<li class="nav__item"><a href="resume.html"><i class="icon-file-text"></i>رزومه</a></li>
                             <li class="nav__item"><a  href="works.html"><i class="icon-codesandbox"></i> کارها</a></li>
                             <li class="nav__item"><a href="blog.html"><i class="icon-book-open"></i>وبلاگ</a></li>
-                            <li class="nav__item"><a href="contact.html"><i class="icon-book"></i>تماس با ما</a></li>
+                            <li class="nav__item"><a href="contact.html"><i class="icon-book"></i>تماس با من</a></li>
                         </ul>
 					</div>
 		        </aside>
@@ -108,7 +108,7 @@
 
 {% endblock %}
 <!-- Footer -->
-<footer class="footer">© 1399 ملیکا خلیلیان</footer>
+<footer class="footer">© 2023 Amirmohammad ghazanfari</footer>
 </div>
 </div>
 </div>	
@@ -131,12 +131,13 @@
 <div class="btnSlideNav slideClose"></div>
 <div class="slideNav">
 <ul class="list-unstyled">
-<li class="slideNav__item rtl-mode"><h4 class="title title--5">صفحات بیشتر</h4> <a href="">نسخه چپ چین</a></li>
-<li class="slideNav__item"><a href="one-page.html">صفحه تکی</a></li>
-<li class="slideNav__item"><a href="background-2.html">پس زمینه مثلثی</a></li>
-<li class="slideNav__item"><a href="works_v2.html">نمونه کارها نسخه 2</a></li>
+<li class="slideNav__item rtl-mode"><h4 class="title title--5">دسترسی سریع</h4> <a href=""></a></li>
+<li class="slideNav__item"><a href="{% url 'home:main' %}">درباره ی من</a></li>
+<li class="slideNav__item"><a href="background-2.html">رزومه</a></li>
+<li class="slideNav__item"><a href="works_v2.html">کارها</a></li>
+<li class="slideNav__item"><a href="works_v2.html">وبلاگ</a></li>
+<li class="slideNav__item"><a href="works_v2.html">تماس با من</a></li>
 </ul>
-<a href="../about.html" class="btn btn--dark">نسخه روشن</a>
 </div>
 <div class="overlay-slideNav"></div>
 <!-- Demo Menu -->

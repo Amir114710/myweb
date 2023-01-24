@@ -5,31 +5,28 @@ from django.contrib.auth.models import (
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, phone , password=None):
+    def create_user(self, username , password=None):
         """
         Creates and saves a User with the given email, date of
         birth and password.
         """
-        if not phone:
-            raise ValueError('Users must have an phone number')
+        if not username:
+            raise ValueError('Users must have an username')
 
         user = self.model(
-            phone=self.normalize_email(phone),
+            username=self.normalize_email(username),
         )
 
         user.set_password(password)
-        # user.set_email(email)
-        # user.set_Full_name(Full_name)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, phone, password=None):
+    def create_superuser(self, username , password=None):
         """
-        Creates and saves a superuser with the given email, date of
-        birth and password.
+        Creates and saves a superuser with the given email. and password.
         """
         user = self.create_user(
-            phone,
+            username,
             password=password,
         )
         user.is_admin = True
@@ -39,29 +36,32 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     email = models.EmailField(
-        verbose_name='پست الکترونیک',
+        verbose_name='ادرس ایمیل',
         max_length=255,
     )
-    username = models.CharField(max_length=200, verbose_name='نام کاربری' ,unique=True , null=True, blank=True)
-    area_of_activity = models.CharField(max_length=50 , verbose_name='حوضه فعالیت', null=True, blank=True)
-    phone = models.CharField(max_length=12 , verbose_name='شماره تلفن', default='0' ,unique=True,)
-    image = models.ImageField(upload_to='UserImage' , verbose_name='عکس کاربر' , null=True, blank=True)
-    Full_name = models.CharField(max_length=200 , verbose_name='نام کامل' , null=True, blank=True)
-    date_of_birth = models.CharField(max_length=100 , verbose_name='تاریخ تولد' , null=True, blank=True)
-    birth_place = models.CharField(max_length=100 , verbose_name='مکان تولد' , null=True, blank=True)
-    instagram_address = models.TextField(verbose_name='ادرس اینستاگرام', null=True, blank=True)
-    is_active = models.BooleanField(default=True , verbose_name='فعال')
-    is_admin = models.BooleanField(default=False , verbose_name='ادمین')
+    phone = models.CharField(max_length=13 , verbose_name='شماره تلفن' , null=True , blank=True)
+    earea_activity = models.CharField(max_length=150 , verbose_name='حوضه فعالیت' , null=True , blank=True)
+    username = models.CharField(max_length=150  , verbose_name='نام کاربری' , unique=True)
+    fullname = models.CharField(max_length=50 , verbose_name='نام کامل' , null=True , blank=True)
+    image = models.ImageField(upload_to='user/user_image')
+    date_of_birth = models.CharField(max_length=100 , null=True , blank=True , verbose_name='تاریخ تولد')
+    birth_place = models.CharField(max_length=100 , verbose_name='محل تولد' , null=True , blank=True)
+    instagram = models.CharField(max_length=500 , null=True , blank=True)
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+
     objects = UserManager()
 
-    USERNAME_FIELD = 'phone'
-    # REQUIRED_FIELDS = ['']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.phone
+        return self.username
+
     class Meta:
         verbose_name = 'کاربر'
-        verbose_name_plural ='کاربر ها'
+        verbose_name_plural ='تنضیمات قسمت کاربر '
+
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
         # Simplest possible answer: Yes, always

@@ -1,7 +1,8 @@
 from django.db import models
 
 class Activity(models.Model):
-    image = models.ImageField(upload_to='about/actitvity_image')
+    image = models.FileField(upload_to='about/actitvity_image')
+    title = models.CharField(max_length=100 , null=True , blank=True)
     content = models.TextField(null=True , blank=True)
 
     def __str__(self):
@@ -14,7 +15,6 @@ class Activity(models.Model):
 
 class About(models.Model):
     about_content = models.TextField()
-    activity = models.ManyToManyField(Activity , related_name='actitvities')
 
     def __str__(self) -> str:
         return self.about_content[:50]

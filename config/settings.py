@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     #my apps:
     'home_app',
     'account',
+    'resume',
+    #my packages:
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
@@ -66,7 +69,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "context_processors.context_processors.user_profile",
+                # "context_processors.context_processors.profile",
             ],
         },
     },
@@ -127,5 +130,7 @@ MEDIA_ROOT = path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+AUTH_USER_MODEL = 'account.User'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
