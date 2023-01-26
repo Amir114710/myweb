@@ -59,7 +59,7 @@ class UserAdmin(BaseUserAdmin):
     list_filter = ('is_admin','is_active')
     fieldsets = (
         (None, {'fields': ('username' , 'password')}),
-        ('ویژگی ها', {'fields': ('email', 'phone' , 'earea_activity', 'fullname'  ,'date_of_birth' , 'birth_place' , 'instagram' , 'image')}),
+        ('ویژگی ها', {'fields': ('email', 'phone' , 'earea_activity', 'fullname'  ,'date_of_birth' , 'birth_place' , 'instagram' , 'github' , 'image')}),
         ('دسترسی ها', {'fields': ('is_admin','is_active')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin

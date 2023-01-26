@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Details
+{% endblock %}
+{% block content %}
+<!-- Content -->
+<div class="col-12 col-md-12 col-lg-10">
+	<div class="box box-content">
+		<!-- Post -->
+		<div class="pb-3">
+			<header class="header-post">
+				<h1 class="title title--h1">{{resumes.title}}</h1>
+				<div class="caption-post">
+					<p>{{resumes.discription}}</p>
+				</div>
+				<div class="header-post__image-wrap">
+					<img class="cover lazyload" src="{{resumes.image_seconde.url}}" data-zoom alt="" />
+				</div>
+			</header>
+			<div class="caption-post">
+				<p>{{resumes.content}}</p>
+			</div>
+			<div class="gallery-post">
+				<img class="gallery-post__item cover lazyload" src="{{resumes.image_first.url}}" data-zoom alt="" />
+				<img class="gallery-post__item cover lazyload" src="{{resumes.file.url}}" data-zoom alt="" />
+				<div class="gallery-post__caption">کار توسط ملیکا خلیلیان و علی نیازی</div>
+			</div>
+		</div>
+	</div>
+</div>	
+{% endblock %}

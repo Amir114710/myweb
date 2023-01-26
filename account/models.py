@@ -46,7 +46,8 @@ class User(AbstractBaseUser):
     image = models.ImageField(upload_to='user/user_image')
     date_of_birth = models.CharField(max_length=100 , null=True , blank=True , verbose_name='تاریخ تولد')
     birth_place = models.CharField(max_length=100 , verbose_name='محل تولد' , null=True , blank=True)
-    instagram = models.CharField(max_length=500 , null=True , blank=True)
+    instagram = models.CharField(max_length=500 , null=True , blank=True , verbose_name='ادرس اینستا')
+    github = models.CharField(max_length=500 , null=True , blank=True  , verbose_name='ادرس گیت هاب')
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
