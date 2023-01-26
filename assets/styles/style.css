@@ -2378,13 +2378,13 @@ button:focus {
 /* -----------------------------------------------------------------
     - Other
 ----------------------------------------------------------------- */
-.back-to-top {
-  border-top: 1px solid #3B4B5E;
-  border-left: 1px solid #3B4B5E;
+.back-to-top{
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
   cursor: pointer;
   opacity: .5;
   position: fixed;
-  right: 40px;
+  right: 50em;
   bottom: 30px;
   height: 1.125rem;
   width: 1.125rem;
@@ -2392,7 +2392,7 @@ button:focus {
   transition: opacity .35s ease-out;
   z-index: 10;
 }
-.back-to-top:hover {
+.back-to-top:hover{
   opacity: 1;
 }
 @media only screen and (max-width: 580px) {

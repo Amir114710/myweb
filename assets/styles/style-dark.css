@@ -413,8 +413,10 @@ select option,
     - Other
 ----------------------------------------------------------------- */
 .back-to-top {
-  border-top: 1px solid #FCFCFC;
-  border-left: 1px solid #FCFCFC;
+  border-top: 5px solid #FCFCFC;
+  border-left: 5px solid #FCFCFC;
+  position: fixed;
+  margin-right: 10em!important;
 }
 
 .medium-zoom-overlay {
