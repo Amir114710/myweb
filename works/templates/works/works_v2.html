@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Works
+{% endblock %}
+{% block content %}			
+<!-- Content -->
+<div class="col-12 col-md-12 col-lg-10">
+	<div class="box box-content">
+		<div class="pb-2">
+			<h1 class="title title--h1 first-title title__separate">نمونه کار</h1>
+		</div>
+		
+		<!-- Filter -->
+		<div class="select">
+			<span class="placeholder">انتخاب دسته بندی</span>
+			<ul class="filter">
+				<li class="filter__item">دسته بندی</li>
+				<li class="filter__item active" data-filter="*"><a class="filter__link active" href="#filter">همه</a></li>
+				<li class="filter__item" data-filter=".category-concept"><a class="filter__link" href="#filter">مفهوم</a></li>
+				<li class="filter__item" data-filter=".category-design"><a class="filter__link" href="#filter">طراحی</a></li>
+				<li class="filter__item" data-filter=".category-life"><a class="filter__link" href="#filter">زندگی</a></li>
+			</ul>
+			<input type="hidden" name="changemetoo"/>
+		</div>
+
+		<!-- Gallery -->
+		<div class="gallery-grid gallery-grid-two js-grid js-filter-container">
+			<div class="gutter-sizer"></div>
+			<!-- Item 1 -->
+			<figure class="gallery-grid__item category-concept">
+				<div class="gallery-grid__image-wrap">
+					<img class="gallery-grid__image cover lazyload" src="../assets/img/image_01.jpg" data-zoom alt="" />
+				</div>
+				<figcaption class="gallery-grid__caption">
+					<h4 class="title title--h6 gallery-grid__title">نصف آووکادو</h4>
+					<span class="gallery-grid__category">مفهوم</span>
+				</figcaption>
+			</figure>
+
+			<!-- Item 2 -->
+			<figure class="gallery-grid__item category-concept">
+				<div class="gallery-grid__image-wrap">
+					<img class="gallery-grid__image cover lazyload" src="../assets/img/image_02.jpg" data-zoom alt="" />
+				</div>	
+				<figcaption class="gallery-grid__caption">
+					<h4 class="title title--h6 gallery-grid__title">فلامینگو صورتی</h4>
+					<span class="gallery-grid__category">مفهوم</span>
+				</figcaption>
+			</figure>
+
+			<!-- Item 3 -->
+			<figure class="gallery-grid__item category-design">
+				<div class="gallery-grid__image-wrap">
+					<img class="gallery-grid__image cover lazyload" src="../assets/img/image_03.jpg" data-zoom alt="" />
+				</div>	
+				<figcaption class="gallery-grid__caption">
+					<h4 class="title title--h6 gallery-grid__title">چکیده</h4>
+					<span class="gallery-grid__category">طراحی</span>
+				</figcaption>
+			</figure>
+
+			<!-- Item 4 -->
+			<figure class="gallery-grid__item category-design">
+				<div class="gallery-grid__image-wrap">
+					<img class="gallery-grid__image cover lazyload" src="../assets/img/image_04.jpg" data-zoom alt="" />
+				</div>
+				<figcaption class="gallery-grid__caption">
+					<h4 class="title title--h6 gallery-grid__title">چکیده #2</h4>
+					<span class="gallery-grid__category">طراحی</span>
+				</figcaption>
+			</figure>
+
+			<!-- Item 5 -->
+			<figure class="gallery-grid__item category-design">
+				<div class="gallery-grid__image-wrap">
+					<img class="gallery-grid__image cover lazyload" src="../assets/img/image_05.jpg" data-zoom alt="" />
+				</div>
+				<figcaption class="gallery-grid__caption">
+					<h4 class="title title--h6 gallery-grid__title">چکیده #3</h4>
+					<span class="gallery-grid__category">طراحی</span>
+				</figcaption>
+			</figure>
+
+			<!-- Item 6 -->
+			<figure class="gallery-grid__item category-life">
+				<div class="gallery-grid__image-wrap">
+					<img class="gallery-grid__image cover lazyload" src="../assets/img/image_06.jpg" data-zoom alt="" />
+				</div>
+				<figcaption class="gallery-grid__caption">
+					<h4 class="title title--h6 gallery-grid__title">دروازه طلایی</h4>
+					<span class="gallery-grid__category">زندگی</span>
+				</figcaption>
+			</figure>
+
+			<!-- Item 7 -->
+			<figure class="gallery-grid__item category-concept">
+				<div class="gallery-grid__image-wrap">
+					<img class="gallery-grid__image cover lazyload" src="../assets/img/image_07.jpg" data-zoom alt="" />
+				</div>
+				<figcaption class="gallery-grid__caption">
+					<h4 class="title title--h6 gallery-grid__title">هلو</h4>
+					<span class="gallery-grid__category">مفهوم</span>
+				</figcaption>
+			</figure>
+
+			<!-- Item 8 -->
+			<figure class="gallery-grid__item category-design">
+				<div class="gallery-grid__image-wrap">
+					<img class="gallery-grid__image cover lazyload" src="../assets/img/image_08.jpg" data-zoom alt="" />
+				</div>
+				<figcaption class="gallery-grid__caption">
+					<h4 class="title title--h6 gallery-grid__title">چکیده #4</h4>
+					<span class="gallery-grid__category">طراحی</span>
+				</figcaption>
+			</figure>
+
+			<!-- Item 9 -->
+			<figure class="gallery-grid__item category-life">
+				<div class="gallery-grid__image-wrap">
+					<img class="gallery-grid__image cover lazyload" src="../assets/img/image_09.jpg" data-zoom alt="" />
+				</div>
+				<figcaption class="gallery-grid__caption">
+					<h4 class="title title--h6 gallery-grid__title">جوجه تيغي</h4>
+					<span class="gallery-grid__category">زندگی</span>
+				</figcaption>
+			</figure>
+		</div><!-- Gallery End -->
+	</div>
+{% endblock %}

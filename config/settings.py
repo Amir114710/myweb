@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'home_app',
     'account',
     'resume',
+    'works',
     #my packages:
     'django_cleanup',
 ]
