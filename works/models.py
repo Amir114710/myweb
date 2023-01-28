@@ -30,7 +30,7 @@ class Work(models.Model):
     class Meta:
         ordering = ('-created',)
         verbose_name = 'دسته بندی ها کار ها'
-        verbose_name_plural ='تنضیمات قسمت دسته بندی های کاری'
+        verbose_name_plural ='تنضیمات قسمت کاری'
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.english_title)
