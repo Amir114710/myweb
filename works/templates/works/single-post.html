@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{works.title}}
+{% endblock %}
+{% block content %}
+<!-- Content -->
+<div class="col-12 col-md-12 col-lg-10">
+	<div class="box box-content">
+		<!-- Post -->
+		<div class="pb-3">
+			<header class="header-post">
+				<h1 class="title title--h1">{{works.title}}</h1>
+				<div class="caption-post">
+					<p>{{works.discription}}</p>
+				</div>
+				<div class="header-post__image-wrap">
+					<img class="cover lazyload" src="{{works.image.url}}" data-zoom alt="" />
+				</div>
+			</header>
+			<div class="caption-post">
+				<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد</p>
+				<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
+			</div>
+			<div class="gallery-post">
+				<img class="gallery-post__item cover lazyload" src="{% static "img/image_10.jpg" %}" data-zoom alt="" />
+				<img class="gallery-post__item cover lazyload" src="{% static "img/image_11.jpg" %}" data-zoom alt="" />
+				<div class="gallery-post__caption">{{works.author.first}}</div>
+			</div>
+			<div class="caption-post">
+				<h3 class="title title--h3">اگر آمادگی اشتباه کردن را ندارید هرگز موفق نمی شوید</h3>
+				<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد</p>
+				<blockquote class="block-quote">
+					<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+					<span class="block-quote__author">ملیکا خلیلیان</span>
+				</blockquote>
+				<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
+				<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی</p>
+			</div>
+			<footer class="footer-post">
+				<a class="footer-post__share" href="http://facebook.com/"><i class="font-icon icon-facebook"></i><span>فیس بوک</span></a>
+				<a class="footer-post__share" href="http://twitter.com/"><i class="font-icon icon-twitter"></i><span>توییتر</span></a>
+				<a class="footer-post__share" href="http://linkedin.com/"><i class="font-icon icon-linkedin"></i><span>لینکدین</span></a>
+			</footer>
+		</div>
+		
+		<div class="box-inner box-inner--rounded">
+			<h2 class="title title--h3">نظرات <span class="color--light">(3)</span></h2>
+			
+			<!-- Comment -->
+			<div class="comment-box">
+				<div class="comment-box__inner">
+					<svg class="avatar avatar--60" viewBox="0 0 84 84">
+						<g class="avatar__hexagon">
+							<image xlink:href="../assets/img/avatar-2.jpg" height="100%" width="100%" />
+						</g>
+					</svg>
+					<div class="comment-box__body">
+						<h5 class="comment-box__details"><span>علی نیازی</span><span class="comment-box__details-date">5 دقیقه پیش</span></h5>
+						<p>مقاله ای بسیار جالب و آموزنده در مورد طراحی. چیزهای جدید و جالب فرا گرفتم.</p>
+
+						<ul class="comment-box__footer">
+							<li><i class="font-icon icon-like-fill"></i> <span>80</span></li>
+							<li><i class="font-icon icon-reply"></i> <span>پاسخ</span></li>
+						</ul>
+					</div>
+				</div>
+				
+				<!-- Comment -->
+				<div class="comment-box">
+					<div class="comment-box__inner">
+						<svg class="avatar avatar--60" viewBox="0 0 84 84">
+							<g class="avatar__hexagon">
+								<image xlink:href="{% static "img/avatar-3.jpg" %}" height="100%" width="100%" />
+							</g>
+						</svg>
+						<div class="comment-box__body">
+							<h5 class="comment-box__details"><span>ملیکا خلیلیان</span><span class="comment-box__details-date">1 دقیقه پیش</span></h5>
+							<p>موافقم ، مقاله ای بسیار جالب. بسیار از شما متشکرم! <img class="emoji" src="{% static "icons/emoji/emoji-nerd.svg" %}" alt="nerd"/></p>
+							
+							<ul class="comment-box__footer">
+								<li><i class="font-icon icon-like-fill"></i> <span>35</span></li>
+								<li><i class="font-icon icon-reply"></i> <span>پاسخ</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Comment -->
+			<div class="comment-box">
+				<div class="comment-box__inner">
+					<svg class="avatar avatar--60" viewBox="0 0 84 84">
+						<g class="avatar__hexagon">
+							<image xlink:href="../assets/img/avatar-6.jpg" height="100%" width="100%" />
+						</g>
+					</svg>
+					<div class="comment-box__body">
+						<h5 class="comment-box__details"><span>علی نیازی</span><span class="comment-box__details-date">15 دقیقه پیش</span></h5>
+						<p>از این مقاله خوب متشکرم. منتظر موارد جدید هستیم.</p>
+						
+						<ul class="comment-box__footer">
+							<li><i class="font-icon icon-like-fill"></i> <span>15</span></li>
+							<li><i class="font-icon icon-reply"></i> <span>پاسخ</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Comment form -->
+			<ul class="social-auth">
+				<li class="social-auth__item">وارد شوید با:</li>
+				<li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-facebook"></i></a></li>
+				<li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-twitter"></i></a></li>
+				<li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-dribbble"></i></a></li>
+				<li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-behance"></i></a></li>
+			</ul>
+			<form class="comment-form">
+				<textarea id="commentForm" class="textarea form-control" required="required" placeholder="نوشتن دیدگاه ..." rows="1"></textarea>
+				<button type="submit" class="btn"><i class="font-icon icon-send"></i></button>
+				<div class="dropdown dropup">
+					<i class="font-icon icon-smile" id="dropdownEmoji" data-toggle="dropdown" aria-haspopup="true"></i>
+					<div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownEmoji">
+						<div class="emoji-wrap">
+							<img class="emoji" src="{% static "icons/emoji/emoji-laughing.svg" %}" title=":laughing:" alt="laughing"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-happy-2.svg" %}" title=":happy 2:" alt="happy 2"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-crazy.svg" %}" title=":crazy:" alt="crazy"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-bad.svg" %}" title=":bad:" alt="bad"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-angry.svg" %}" title=":angry:" alt="angry"/>
+							<img class="emoji" src="{% static  "icons/emoji/emoji-happy.svg" %}" title="happy" alt="happy"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-thinking.svg" %}" title=":thinking:" alt="thinking"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-sad.svg" %}" title=":sad:" alt="sad"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-pressure.svg" %}" title=":pressure:" alt="pressure"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-in-love.svg" %}" title=":in love:" alt="in love"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-nerd.svg" %}" title=":laughing:" alt="nerd"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-happy-3.svg" %}" title=":happy 3:" alt="happy 3"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-shocked.svg" %}" title=":shocked:" alt="shocked"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-wink.svg" %}" title=":wink:" alt="wink"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-sweating.svg" %}" title=":sweating:" alt="sweating"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-shocked-2.svg" %}" title=":shocked 2:" alt="shocked 2"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-shocked-3.svg" %}" title=":shocked 3:" alt="shocked 3"/>
+							<img class="emoji" src="{% static "icons/emoji/emoji-sad-2.svg" %}" title=":sad 2:" alt="sad 2"/>
+						</div>	
+					</div>
+				</div>	
+			</form>
+			
+		</div>
+	</div>
+{% endblock %}

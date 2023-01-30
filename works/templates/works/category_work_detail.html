@@ -17,9 +17,9 @@ Works
 			<ul class="filter">
 				<li class="filter__item">دسته بندی</li>
 				<li class="filter__item" data-filter="{% url 'work:main_work' %}"><a class="filter__link" href="{% url  'work:main_work' %}">همه</a></li>
-				{% for data in categories %}
+				<!-- {% for data in categories %}
 				<li class="filter__item" data-filter="{% url 'work:category_detail' data.id %}"><a class="filter__link" href="category/{{data.id}}">{{data.title}}</a></li>
-				{% endfor %}
+				{% endfor %} -->
 			</ul>
 			<input type="hidden" name="changemetoo"/>
 		</div>
@@ -90,7 +90,7 @@ Works
 					<img class="gallery-grid__image cover lazyload" src="{{data.image.url}}" data-zoom alt="*" />
 				</div>
 				<figcaption class="gallery-grid__caption">
-					<a href="{% url 'work:work_detail' data.slug %}"><h4 class="title title--h6 gallery-grid__title">{{data.title}}</h4></a>
+					<h4 class="title title--h6 gallery-grid__title">{{data.title}}</h4>
 					<span class="gallery-grid__category">{{data.categories.first}}</span>
 				</figcaption>
 			</figure>
