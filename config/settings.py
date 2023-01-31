@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'resume',
     'works',
     #my packages:
+    'star_ratings',
     'django_cleanup',
+    'django_social_share',
 ]
 
 MIDDLEWARE = [

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load social_share %}
+{% load ratings %}
 {% block title %}
 {{works.title}}
 {% endblock %}
@@ -38,9 +40,11 @@
 				<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی</p>
 			</div>
 			<footer class="footer-post">
-				<a class="footer-post__share" href="http://facebook.com/"><i class="font-icon icon-facebook"></i><span>فیس بوک</span></a>
-				<a class="footer-post__share" href="http://twitter.com/"><i class="font-icon icon-twitter"></i><span>توییتر</span></a>
-				<a class="footer-post__share" href="http://linkedin.com/"><i class="font-icon icon-linkedin"></i><span>لینکدین</span></a>
+				<span class="footer-post__share">{% post_to_facebook '{{works.get_absolute_url}}' '<i class="font-icon icon-facebook"></i><span>فیس بوک</span>' %}</span>
+				<span class="footer-post__share">{% post_to_twitter 'حتما به سایت ما سر یزنید!' '{{works.get_absolute_url}}' '<i class="font-icon icon-twitter"></i><span>توییتر</span>' %}</span>
+			</footer>
+			<footer class="footer-post">
+				{% ratings works %}
 			</footer>
 		</div>
 		
