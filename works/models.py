@@ -45,3 +45,19 @@ class Work(models.Model):
     def get_absolute_url(self):
         return reverse('work:work_detail' , kwargs={'slug':self.slug})
 
+class Comments(models.Model):
+    user = models.ForeignKey(User , related_name="comment" , on_delete=models.CASCADE , verbose_name = 'کاربر')
+    works = models.ForeignKey(Work, related_name="comment" , on_delete=models.CASCADE, verbose_name = 'کار ها')
+
+    parent = models.ForeignKey('self' , on_delete=models.CASCADE , related_name = 'replies' , null=True , blank=True, verbose_name = 'پست جواب داده شده')
+
+    message = models.TextField(null=True, blank=True, verbose_name = 'نظرات')
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user.phone}-{self.works.title}'
+
+    class Meta:
+        verbose_name = 'کامنت'
+        verbose_name_plural = 'کامنت ها'
+        ordering = ('-created',)

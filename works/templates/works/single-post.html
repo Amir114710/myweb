@@ -25,8 +25,8 @@
 				<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
 			</div>
 			<div class="gallery-post">
-				<img class="gallery-post__item cover lazyload" src="{% static "img/image_10.jpg" %}" data-zoom alt="" />
-				<img class="gallery-post__item cover lazyload" src="{% static "img/image_11.jpg" %}" data-zoom alt="" />
+				<img class="gallery-post__item cover lazyload" src="{{works.image.url}}" data-zoom alt="" />
+				<img class="gallery-post__item cover lazyload" src="{{works.image.url}}" data-zoom alt="" />
 				<div class="gallery-post__caption">{{works.author.first}}</div>
 			</div>
 			<div class="caption-post">
@@ -53,23 +53,30 @@
 			
 			<!-- Comment -->
 			<div class="comment-box">
-				<div class="comment-box__inner">
-					<svg class="avatar avatar--60" viewBox="0 0 84 84">
-						<g class="avatar__hexagon">
-							<image xlink:href="../assets/img/avatar-2.jpg" height="100%" width="100%" />
-						</g>
-					</svg>
-					<div class="comment-box__body">
-						<h5 class="comment-box__details"><span>علی نیازی</span><span class="comment-box__details-date">5 دقیقه پیش</span></h5>
-						<p>مقاله ای بسیار جالب و آموزنده در مورد طراحی. چیزهای جدید و جالب فرا گرفتم.</p>
-
-						<ul class="comment-box__footer">
-							<li><i class="font-icon icon-like-fill"></i> <span>80</span></li>
-							<li><i class="font-icon icon-reply"></i> <span>پاسخ</span></li>
-						</ul>
+				{% for comment in works.comment.all %}
+					{% if comment.parent == None %}
+					<div class="comment-box__inner">
+						<svg class="avatar avatar--60" viewBox="0 0 84 84">
+							<g class="avatar__hexagon">
+								{% if comment.user.image.url == None %}
+								<image xlink:href="" height="100%" width="100%" />
+								{% else %}
+								<image xlink:href="{{comment.user.image.url}}" height="100%" width="100%" />
+								{% endif %}
+							</g>
+						</svg>
+						<div class="comment-box__body">
+							<h5 class="comment-box__details"><span>{{comment.user.username}}</span><span class="comment-box__details-date">{{comment.created}}</span></h5>
+							<p>{{comment.message}}</p>
+	
+							<ul class="comment-box__footer">
+								<li><i class="font-icon icon-like-fill"></i> <span>80</span></li>
+								<li><i class="font-icon icon-reply"></i> <span>پاسخ</span></li>
+							</ul>
+						</div>
 					</div>
-				</div>
-				
+					{% endif %}
+				{% endfor %}
 				<!-- Comment -->
 				<div class="comment-box">
 					<div class="comment-box__inner">
@@ -84,29 +91,8 @@
 							
 							<ul class="comment-box__footer">
 								<li><i class="font-icon icon-like-fill"></i> <span>35</span></li>
-								<li><i class="font-icon icon-reply"></i> <span>پاسخ</span></li>
 							</ul>
 						</div>
-					</div>
-				</div>
-			</div>
-			
-			<!-- Comment -->
-			<div class="comment-box">
-				<div class="comment-box__inner">
-					<svg class="avatar avatar--60" viewBox="0 0 84 84">
-						<g class="avatar__hexagon">
-							<image xlink:href="../assets/img/avatar-6.jpg" height="100%" width="100%" />
-						</g>
-					</svg>
-					<div class="comment-box__body">
-						<h5 class="comment-box__details"><span>علی نیازی</span><span class="comment-box__details-date">15 دقیقه پیش</span></h5>
-						<p>از این مقاله خوب متشکرم. منتظر موارد جدید هستیم.</p>
-						
-						<ul class="comment-box__footer">
-							<li><i class="font-icon icon-like-fill"></i> <span>15</span></li>
-							<li><i class="font-icon icon-reply"></i> <span>پاسخ</span></li>
-						</ul>
 					</div>
 				</div>
 			</div>

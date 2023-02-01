@@ -41,6 +41,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static "styles/style-rtl.css" %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static "styles/scrool.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "demo/style-demo.css" %}"/>
+	<link rel="stylesheet" href="{% static "star-ratings/css/star-ratings.css" %}">
+	<script type="text/javascript" src="{% static "star-ratings/js/dist/star-ratings.min.js" %}"></script>
 	
 </head>
 <body>
@@ -73,8 +75,8 @@
 					    <h4 class="title titl--h4">{{data.fullname}}</h4>
 						<div class="status">{{data.earea_activity}}</div>
 						<ul class="header__social">
-							<li><a href="{{data.instagram}}"><i class="font-icon icon-instagram1"></i></a></li>
-							<li><a href="{{data.github}}"><i class="font-icon icon-github1"></i></a></li>
+							<li><a href="{{data.instagram}}"target="_blank"><i class="font-icon icon-instagram1"></i></a></li>
+							<li><a href="{{data.github}}" target="_blank"><i class="font-icon icon-github1"></i></a></li>
 						</ul>
 					</div>
 				</div>

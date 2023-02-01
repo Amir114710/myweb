@@ -1,7 +1,7 @@
-from django.shortcuts import get_object_or_404 , render
+from django.shortcuts import get_object_or_404, redirect , render
 from django.views.generic import TemplateView , ListView , View , DeleteView
 from account.models import User
-from .models import Work , Categories
+from .models import Comments, Work , Categories
 
 class WorkView(ListView):
     model = Work
@@ -21,6 +21,12 @@ class WorkDetailView(DeleteView):
         context = super().get_context_data(*args , **kwargs)
         context['user'] = User.objects.all()
         return context
+    def post(self,request,slug):
+        works = Work.objects.get(slug=slug)
+        parent_id = request.POST.get('parent_id')
+        message = request.POST.get('message')
+        Comments.objects.create(message=message, parent_id=parent_id , works=works , user=request.user)
+        return redirect('blog:detail' , slug)
         
 class Category_details(View):
     queryset = None
