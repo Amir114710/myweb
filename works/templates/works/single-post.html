@@ -46,6 +46,17 @@
 			<footer class="footer-post">
 				{% ratings works %}
 			</footer>
+			<footer class="footer-post">
+				{% if request.user.is_authenticated == True %}
+				<div>  
+					{% if is_liked %}
+					<a href="{% url 'work:like' works.slug works.id %}" style="color: rgb(255, 255, 255);"><li><i class="font-icon icon-like-fill"></i><span>80</span></li></a>                                   
+					{% else %}
+					<a href="{% url 'work:like' works.slug works.id %}" style="color: rgb(255, 255, 255);"><li><i class="font-icon icon-like-regular"></i><span>{{works.like2.count}}</span></li></a>
+					{% endif %}
+				</div>
+				{% endif %}
+			</footer>
 		</div>
 		
 		<div class="box-inner box-inner--rounded">
@@ -70,31 +81,36 @@
 							<p>{{comment.message}}</p>
 	
 							<ul class="comment-box__footer">
-								<li><i class="font-icon icon-like-fill"></i> <span>80</span></li>
-								<li><i class="font-icon icon-reply"></i> <span>پاسخ</span></li>
+								<li onclick="set_value({{ comment.id }})"><i class="font-icon icon-reply"></i><span>پاسخ</span></li>
 							</ul>
 						</div>
 					</div>
 					{% endif %}
-				{% endfor %}
-				<!-- Comment -->
-				<div class="comment-box">
-					<div class="comment-box__inner">
-						<svg class="avatar avatar--60" viewBox="0 0 84 84">
-							<g class="avatar__hexagon">
-								<image xlink:href="{% static "img/avatar-3.jpg" %}" height="100%" width="100%" />
-							</g>
-						</svg>
-						<div class="comment-box__body">
-							<h5 class="comment-box__details"><span>ملیکا خلیلیان</span><span class="comment-box__details-date">1 دقیقه پیش</span></h5>
-							<p>موافقم ، مقاله ای بسیار جالب. بسیار از شما متشکرم! <img class="emoji" src="{% static "icons/emoji/emoji-nerd.svg" %}" alt="nerd"/></p>
-							
-							<ul class="comment-box__footer">
-								<li><i class="font-icon icon-like-fill"></i> <span>35</span></li>
-							</ul>
+					{% for reply in comment.replies.all %}
+					<div class="comment-box">
+						<div class="comment-box__inner">
+							<svg class="avatar avatar--60" viewBox="0 0 84 84">
+								<g class="avatar__hexagon">
+									{% if reply.user.image.url == None %}
+									<image xlink:href="" height="100%" width="100%" />
+									{% else %}
+									<image xlink:href="{{reply.user.image.url}}" height="100%" width="100%" />
+									{% endif %}								
+								</g>
+							</svg>
+							<div class="comment-box__body">
+								<h5 class="comment-box__details"><span>{{reply.user.username}}</span><span class="comment-box__details-date">{{reply.created}}</span></h5>
+								<p>{{reply.message}}</p>
+								
+								<ul class="comment-box__footer">
+									<li><i class="font-icon icon-like-fill"></i> <span>35</span></li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
+					{% endfor %}
+				{% endfor %}
+				<!-- Comment -->
 			</div>
 			
 			<!-- Comment form -->
@@ -105,10 +121,12 @@
 				<li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-dribbble"></i></a></li>
 				<li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-behance"></i></a></li>
 			</ul>
-			<form class="comment-form">
-				<textarea id="commentForm" class="textarea form-control" required="required" placeholder="نوشتن دیدگاه ..." rows="1"></textarea>
+			<form class="comment-form" action="" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="parent_id" id="parent_id" value="">
+				<textarea id="commentForm" name="message" class="textarea form-control" required="required" placeholder="نظر خود را بنویسید..." rows="1"></textarea>
 				<button type="submit" class="btn"><i class="font-icon icon-send"></i></button>
-				<div class="dropdown dropup">
+				<!-- <div class="dropdown dropup">
 					<i class="font-icon icon-smile" id="dropdownEmoji" data-toggle="dropdown" aria-haspopup="true"></i>
 					<div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownEmoji">
 						<div class="emoji-wrap">
@@ -132,9 +150,15 @@
 							<img class="emoji" src="{% static "icons/emoji/emoji-sad-2.svg" %}" title=":sad 2:" alt="sad 2"/>
 						</div>	
 					</div>
-				</div>	
+				</div>	 -->
 			</form>
 			
 		</div>
 	</div>
+<script>
+	function set_value(id){
+		document.getElementById('parent_id').value = id;
+		window.location.href = '#commentForm'
+	}
+</script>
 {% endblock %}

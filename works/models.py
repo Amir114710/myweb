@@ -47,7 +47,7 @@ class Work(models.Model):
 
 class Comments(models.Model):
     user = models.ForeignKey(User , related_name="comment" , on_delete=models.CASCADE , verbose_name = 'کاربر')
-    works = models.ForeignKey(Work, related_name="comment" , on_delete=models.CASCADE, verbose_name = 'کار ها')
+    works = models.ForeignKey(Work , related_name="comment" , on_delete=models.CASCADE, verbose_name = 'کار ها')
 
     parent = models.ForeignKey('self' , on_delete=models.CASCADE , related_name = 'replies' , null=True , blank=True, verbose_name = 'پست جواب داده شده')
 
@@ -58,6 +58,20 @@ class Comments(models.Model):
         return f'{self.user.phone}-{self.works.title}'
 
     class Meta:
-        verbose_name = 'کامنت'
-        verbose_name_plural = 'کامنت ها'
+        verbose_name = 'نظر'
+        verbose_name_plural = "تنظیمات قسمت نظرات"
         ordering = ('-created',)
+
+class Like(models.Model):
+    users = models.ForeignKey(User , related_name='likes2' , on_delete=models.CASCADE , verbose_name = 'کاربر')
+    works = models.ForeignKey(Work , related_name='likes2' , on_delete=models.CASCADE , verbose_name = 'کار ها')
+    created = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return f"{self.users.username} - {self.works.title}"
+
+    class Meta:
+        verbose_name = "لایک"
+        verbose_name_plural = "تنظیمات قسمت لایک ها"
+        ordering = ("-created",)
