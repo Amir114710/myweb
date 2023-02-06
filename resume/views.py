@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView , ListView , DetailView
-from account.models import User
+from account.models import User , Profile
 from .models import Skill , ResumePost
 
 class ResumeView(ListView):
@@ -10,7 +10,7 @@ class ResumeView(ListView):
 
     def get_context_data(self ,*args , **kwargs):
         context = super().get_context_data(*args , **kwargs)
-        context['user'] = User.objects.all()
+        context['user'] = Profile.objects.all()
         context['skill'] = Skill.objects.all()
         return context
 
@@ -21,5 +21,5 @@ class DetailResume(DetailView):
 
     def get_context_data(self ,*args , **kwargs):
         context = super().get_context_data(*args , **kwargs)
-        context['user'] = User.objects.all()
+        context['user'] = Profile.objects.all()
         return context

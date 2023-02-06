@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'account',
     'resume',
     'works',
+    'blog',
     #my packages:
     'star_ratings',
     'django_cleanup',
@@ -133,6 +134,7 @@ MEDIA_ROOT = path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
 AUTH_USER_MODEL = 'account.User'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

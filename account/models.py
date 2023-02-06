@@ -5,7 +5,7 @@ from django.contrib.auth.models import (
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username , password=None):
+    def create_user(self, username , email , password=None):
         """
         Creates and saves a User with the given email, date of
         birth and password.
@@ -78,3 +78,28 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+    
+
+class Profile(models.Model):
+    email = models.EmailField(
+        verbose_name='ادرس ایمیل',
+        max_length=255,
+    )
+    phone = models.CharField(max_length=13 , verbose_name='شماره تلفن' , null=True , blank=True)
+    earea_activity = models.CharField(max_length=150 , verbose_name='حوضه فعالیت' , null=True , blank=True)
+    username = models.CharField(max_length=150  , verbose_name='نام کاربری' , unique=True)
+    fullname = models.CharField(max_length=50 , verbose_name='نام کامل' , null=True , blank=True)
+    image = models.ImageField(upload_to='user/user_image')
+    date_of_birth = models.CharField(max_length=100 , null=True , blank=True , verbose_name='تاریخ تولد')
+    birth_place = models.CharField(max_length=100 , verbose_name='محل تولد' , null=True , blank=True)
+    instagram = models.CharField(max_length=500 , null=True , blank=True , verbose_name='ادرس اینستا')
+    github = models.CharField(max_length=500 , null=True , blank=True  , verbose_name='ادرس گیت هاب')
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.username
+
+    class Meta:
+        verbose_name = 'پروفایل'
+        verbose_name_plural ='تنضیمات قسمت پروفایل '

@@ -1,6 +1,6 @@
-from account.models import User
+from account.models import User , Profile
 
 
 def profile(request):
-    user = User.objects.all() 
-    return {"user": user}
+    profile = Profile.objects.all() 
+    return {"user": profile}

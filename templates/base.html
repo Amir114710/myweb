@@ -99,7 +99,7 @@
                             <li class="nav__item"><a class="{% if request.resolver_match.url_name == 'main'%}active{% endif %}" href="{% url 'home:main' %}"><i class="icon-user"></i>درباره ی ما</a></li>
 							<li class="nav__item"><a class="{% if request.resolver_match.url_name == 'resume'%}active{% endif %}" href="{% url 'resume:resume' %}"><i class="icon-file-text"></i>رزومه</a></li>
                             <li class="nav__item"><a class="{% if request.resolver_match.url_name == 'main_work'%}active{% endif %}" href="{% url 'work:main_work' %}"><i class="icon-codesandbox"></i> کارها</a></li>
-                            <li class="nav__item"><a href="blog.html"><i class="icon-book-open"></i>وبلاگ</a></li>
+                            <li class="nav__item"><a class="{% if request.resolver_match.url_name == 'main_blog'%}active{% endif %}" href="{% url 'blog:main_blog' %}"><i class="icon-book-open"></i>وبلاگ</a></li>
                             <li class="nav__item"><a href="contact.html"><i class="icon-book"></i>تماس با من</a></li>
                         </ul>
 					</div>
@@ -138,7 +138,7 @@
 <li class="slideNav__item"><a href="{% url 'home:main' %}">درباره ی من</a></li>
 <li class="slideNav__item"><a href="{% url 'resume:resume' %}">رزومه</a></li>
 <li class="slideNav__item"><a href="{% url 'work:main_work' %}">کارها</a></li>
-<li class="slideNav__item"><a href="works_v2.html">وبلاگ</a></li>
+<li class="slideNav__item"><a href="{% url 'blog:main_blog' %}">وبلاگ</a></li>
 <li class="slideNav__item"><a href="works_v2.html">تماس با من</a></li>
 </ul>
 </div>

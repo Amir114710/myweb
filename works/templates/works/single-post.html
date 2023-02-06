@@ -46,21 +46,23 @@
 			<footer class="footer-post">
 				{% ratings works %}
 			</footer>
-			<footer class="footer-post">
+			<footer class="footer-post" id="footer-post">
 				{% if request.user.is_authenticated == True %}
 				<div>  
 					{% if is_liked %}
-					<a href="{% url 'work:like' works.slug works.id %}" style="color: rgb(255, 255, 255);"><li><i class="font-icon icon-like-fill"></i><span>80</span></li></a>                                   
+					<a id="like-post" href="{% url 'work:like' works.slug works.id %}" style="color: rgb(255, 255, 255);"><i onclick="likes('{{works.slug}}' , '{{works.id}}')" class="font-icon icon-like-fill"></i></a>                                   
 					{% else %}
-					<a href="{% url 'work:like' works.slug works.id %}" style="color: rgb(255, 255, 255);"><li><i class="font-icon icon-like-regular"></i><span>{{works.like2.count}}</span></li></a>
+					<a id="like-post" href="{% url 'work:like' works.slug works.id %}" style="color: rgb(255, 255, 255);"><i onclick="likes('{{works.slug}}' , '{{works.id}}')" class="font-icon icon-like"></i></a>
 					{% endif %}
 				</div>
+				{% else %}
+				<p class="alert alert-danger">برای لایک کردن پست اول در <a href="{% url 'account:register' %}">سایت ثبت نام</a> کنید</p>
 				{% endif %}
 			</footer>
 		</div>
 		
 		<div class="box-inner box-inner--rounded">
-			<h2 class="title title--h3">نظرات <span class="color--light">(3)</span></h2>
+			<h2 class="title title--h3">نظرات <span class="color--light">({{works.comment.count}})</span></h2>
 			
 			<!-- Comment -->
 			<div class="comment-box">
@@ -103,7 +105,7 @@
 								<p>{{reply.message}}</p>
 								
 								<ul class="comment-box__footer">
-									<li><i class="font-icon icon-like-fill"></i> <span>35</span></li>
+									<!-- <li><i class="font-icon icon-like-fill"></i> <span>35</span></li> -->
 								</ul>
 							</div>
 						</div>
@@ -115,12 +117,12 @@
 			
 			<!-- Comment form -->
 			<ul class="social-auth">
-				<li class="social-auth__item">وارد شوید با:</li>
-				<li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-facebook"></i></a></li>
+				<!-- <li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-facebook"></i></a></li>
 				<li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-twitter"></i></a></li>
 				<li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-dribbble"></i></a></li>
-				<li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-behance"></i></a></li>
+				<li class="social-auth__item"><a class="social-auth__link" href="#"><i class="font-icon icon-behance"></i></a></li> -->
 			</ul>
+			{% if request.user.is_authenticated == True %}
 			<form class="comment-form" action="" method="post">
 				{% csrf_token %}
 				<input type="hidden" name="parent_id" id="parent_id" value="">
@@ -152,7 +154,9 @@
 					</div>
 				</div>	 -->
 			</form>
-			
+			{% else %}
+			<p class="alert alert-danger">برای به اشتراک گذاشتن نظرات خود در سایت <a href="{% url 'account:register' %}">سایت ثبت نام</a> کنید</p>
+			{% endif %}
 		</div>
 	</div>
 <script>

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+ثبت نام در سایت
+{% endblock %}
+{% block content %}
+<!-- Register -->
+<div class="col-12 col-md-12 col-lg-10">
+    <div class="box box-content">
+        <div class="pb-2">
+            <h1 class="title title--h1 first-title title__separate">ثبت نام</h1>
+        </div>
+
+        <!-- register -->
+        <h2 class="title title--h3">فرم ثبت نام</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for error in form.errors %}
+            <p class="alert alert-danger">{{error}}</p>
+            {% endfor %}
+            <div class="row">
+                <div class="form-group col-12 col-md-6">
+                    {{form.username}}
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    {{form.email}}
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group col-12 col-md-12">
+                    {{form.password}}
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group col-12 col-md-12">
+                    {{form.password2}}
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <button class="btn btn-block" id="btn">ثبت نام</button>
+            <div class="row">
+                <div class="col-12 col-md-6 order-2 order-md-1 text-center text-md-left">
+                    <div id="validator-contact" class="hidden"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
