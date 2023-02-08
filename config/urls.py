@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path , include
 from . import settings
 from django.conf.urls.static import static
+from admin_notification.views import check_notification_view
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('check/notification', check_notification_view, name="check_notifications"),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
     path('' , include('home_app.urls')),
     path('resume/' , include('resume.urls')),

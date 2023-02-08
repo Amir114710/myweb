@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "admin_notification",
     "admin_persian",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -142,3 +143,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STAR_RATINGS_STAR_HEIGHT = 16
 STAR_RATINGS_RERATE = True
 STAR_RATINGS_ANONYMOUS = True
+
+NOTIFICATION_MODEL = 'works.Like'

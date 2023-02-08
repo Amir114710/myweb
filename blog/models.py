@@ -15,6 +15,8 @@ class Post(models.Model):
     content = models.TextField(null=True , blank=True , verbose_name="بدنه پست")
     meta_title = models.CharField(max_length=100 , null=True , blank=True , verbose_name="نام دیگر")
     meta_content = models.TextField(null=True , blank=True , verbose_name="توضیحات بیشتر")
+    date_published = models.CharField(max_length=100 , null=True , blank=True , verbose_name="ماه زمان اراعه پست")
+    number_date = models.SmallIntegerField(null=True , blank=True , verbose_name="روز اراعه پست")
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
