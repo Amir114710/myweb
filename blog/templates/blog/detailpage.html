@@ -12,45 +12,32 @@
 		<!-- Post -->
 		<div class="pb-3">
 			<header class="header-post">
-				<h1 class="title title--h1">{{works.title}}</h1>
+				<h1 class="title title--h1">{{posts.title}}</h1>
 				<div class="caption-post">
-					<p>{{works.discription}}</p>
+					<p>{{posts.discription}}</p>
 				</div>
 				<div class="header-post__image-wrap">
-					<img class="cover lazyload" src="{{works.image.url}}" data-zoom alt="" />
+					<img class="cover lazyload" src="{{posts.image.url}}" data-zoom alt="" />
 				</div>
 			</header>
 			<div class="caption-post">
-				{{works.content}}
+				{{posts.content}}
 			</div>
 			<div class="gallery-post">
-				<img class="gallery-post__item cover lazyload" src="{{works.image.url}}" data-zoom alt="" />
-				<img class="gallery-post__item cover lazyload" src="{{works.image.url}}" data-zoom alt="" />
-				<div class="gallery-post__caption">{{works.author.fullname}}</div>
+				<img class="gallery-post__item cover lazyload" src="{{posts.image.url}}" data-zoom alt="" />
+				<img class="gallery-post__item cover lazyload" src="{{posts.image.url}}" data-zoom alt="" />
+				<div class="gallery-post__caption">{{posts.author.fullname}}</div>
 			</div>
 			<div class="caption-post">
-				<h3 class="title title--h3">{{works.title_content}}</h3>
-				<p>{{works.meta_content}}</p>
+				<h3 class="title title--h3">{{posts.meta_title}}</h3>
+				<p>{{posts.meta_content}}</p>
 			</div>
 			<footer class="footer-post">
 				<span class="footer-post__share">{% post_to_facebook '{{works.get_absolute_url}}' '<i class="font-icon icon-facebook"></i><span>فیس بوک</span>' %}</span>
 				<span class="footer-post__share">{% post_to_twitter 'حتما به سایت ما سر یزنید!' '{{works.get_absolute_url}}' '<i class="font-icon icon-twitter"></i><span>توییتر</span>' %}</span>
 			</footer>
 			<footer class="footer-post">
-				{% ratings works %}
-			</footer>
-			<footer class="footer-post" id="footer-post">
-				{% if request.user.is_authenticated == True %}
-				<div>  
-					{% if is_liked %}
-					<a id="like-post" href="{% url 'work:like' works.slug works.id %}" style="color: rgb(255, 255, 255);"><i onclick="likes('{{works.slug}}' , '{{works.id}}')" class="font-icon icon-like-fill"></i></a>                                   
-					{% else %}
-					<a id="like-post" href="{% url 'work:like' works.slug works.id %}" style="color: rgb(255, 255, 255);"><i onclick="likes('{{works.slug}}' , '{{works.id}}')" class="font-icon icon-like"></i></a>
-					{% endif %}
-				</div>
-				{% else %}
-				<p class="alert alert-danger">برای لایک کردن پست اول در <a href="{% url 'account:register' %}">سایت ثبت نام</a> کنید</p>
-				{% endif %}
+				{% ratings posts %}
 			</footer>
 		</div>
 		

@@ -14,4 +14,10 @@ class BlogView(ListView):
         return context
     
 class PostDetail(DetailView):
-    pass
+    model = Post
+    template_name = "blog/detailpage.html"
+    context_object_name = 'posts'
+    def get_context_data(self ,*args , **kwargs):
+        context = super().get_context_data(*args , **kwargs)
+        context['user'] = Profile.objects.all()
+        return context 
