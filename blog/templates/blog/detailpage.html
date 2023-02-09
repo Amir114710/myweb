@@ -64,10 +64,10 @@
 					<div class="comment-box__inner">
 						<svg class="avatar avatar--60" viewBox="0 0 84 84">
 							<g class="avatar__hexagon">
-								{% if comment.user.image.url == None %}
-								<image xlink:href="" height="100%" width="100%" />
+								{% if comment.user.image.url != None %}
+								<image xlink:href="{{comment.user.image.url}}" height="100%" width="100%"/>
 								{% else %}
-								<image xlink:href="{{comment.user.image.url}}" height="100%" width="100%" />
+								<image xlink:href="{% static "img/main-photo.svg" %}"  height="100%" width="100%">
 								{% endif %}
 							</g>
 						</svg>
