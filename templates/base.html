@@ -96,7 +96,7 @@
                 <aside class="col-12 col-md-12 col-lg-2">
 				    <div class="sidebar box sticky-column">
 	                    <ul class="nav">
-                            <li class="nav__item"><a class="{% if request.resolver_match.url_name == 'main'%}active{% endif %}" href="{% url 'home:main' %}"><i class="icon-user"></i>درباره ی ما</a></li>
+                            <li class="nav__item"><a class="{% if request.resolver_match.url_name == 'main'%}active{% endif %}" href="{% url 'home:main' %}"><i class="icon-user"></i>درباره ی من</a></li>
 							<li class="nav__item"><a class="{% if request.resolver_match.url_name == 'resume'%}active{% endif %}" href="{% url 'resume:resume' %}"><i class="icon-file-text"></i>رزومه</a></li>
                             <li class="nav__item"><a class="{% if request.resolver_match.url_name == 'main_work'%}active{% endif %}" href="{% url 'work:main_work' %}"><i class="icon-codesandbox"></i> کارها</a></li>
                             <li class="nav__item"><a class="{% if request.resolver_match.url_name == 'main_blog'%}active{% endif %}" href="{% url 'blog:main_blog' %}"><i class="icon-book-open"></i>وبلاگ</a></li>

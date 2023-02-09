@@ -34,3 +34,33 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog:blog_detail' , kwargs={'slug':self.slug})
     
+class PostComments(models.Model):
+    user = models.ForeignKey(User , related_name="comments" , on_delete=models.CASCADE , verbose_name = 'کاربر')
+    posts = models.ForeignKey(Post , related_name="comments" , on_delete=models.CASCADE, verbose_name = 'کار ها')
+
+    parent = models.ForeignKey('self' , on_delete=models.CASCADE , related_name = 'replies' , null=True , blank=True, verbose_name = 'پست جواب داده شده')
+
+    message = models.TextField(null=True, blank=True, verbose_name = 'نظرات')
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user.phone}-{self.posts.title}'
+
+    class Meta:
+        verbose_name = 'نظر'
+        verbose_name_plural = "تنظیمات قسمت نظرات"
+        ordering = ('-created',)
+
+class PostLike(models.Model):
+    users = models.ForeignKey(User , related_name='likes' , on_delete=models.CASCADE , verbose_name = 'کاربر')
+    posts = models.ForeignKey(Post , related_name='likes' , on_delete=models.CASCADE , verbose_name = 'کار ها')
+    created = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return f"{self.users.username} - {self.posts.title}"
+
+    class Meta:
+        verbose_name = "لایک"
+        verbose_name_plural = "تنظیمات قسمت لایک ها"
+        ordering = ("-created",)

@@ -33,20 +33,33 @@
 				<p>{{posts.meta_content}}</p>
 			</div>
 			<footer class="footer-post">
-				<span class="footer-post__share">{% post_to_facebook '{{works.get_absolute_url}}' '<i class="font-icon icon-facebook"></i><span>فیس بوک</span>' %}</span>
-				<span class="footer-post__share">{% post_to_twitter 'حتما به سایت ما سر یزنید!' '{{works.get_absolute_url}}' '<i class="font-icon icon-twitter"></i><span>توییتر</span>' %}</span>
+				<span class="footer-post__share">{% post_to_facebook '{{posts.get_absolute_url}}' '<i class="font-icon icon-facebook"></i><span>فیس بوک</span>' %}</span>
+				<span class="footer-post__share">{% post_to_twitter 'حتما به سایت ما سر یزنید!' '{{posts.get_absolute_url}}' '<i class="font-icon icon-twitter"></i><span>توییتر</span>' %}</span>
 			</footer>
 			<footer class="footer-post">
 				{% ratings posts %}
 			</footer>
+			<footer class="footer-post" id="footer-post">
+				{% if request.user.is_authenticated == True %}
+				<div>  
+					{% if is_liked %}
+					<a id="like-post" href="{% url 'blog:like' posts.slug posts.id %}" style="color: rgb(255, 255, 255);"><i onclick="likes('{{posts.slug}}' , '{{posts.id}}')" class="font-icon icon-like-fill"></i></a>                                   
+					{% else %}
+					<a id="like-post" href="{% url 'blog:like' posts.slug posts.id %}" style="color: rgb(255, 255, 255);"><i onclick="likes('{{posts.slug}}' , '{{posts.id}}')" class="font-icon icon-like"></i></a>
+					{% endif %}
+				</div>
+				{% else %}
+				<p class="alert alert-danger">برای لایک کردن پست اول در <a href="{% url 'account:register' %}">سایت ثبت نام</a> کنید</p>
+				{% endif %}
+			</footer>
 		</div>
 		
 		<div class="box-inner box-inner--rounded">
-			<h2 class="title title--h3">نظرات <span class="color--light">({{works.comment.count}})</span></h2>
+			<h2 class="title title--h3">نظرات <span class="color--light">({{posts.comments.count}})</span></h2>
 			
 			<!-- Comment -->
 			<div class="comment-box">
-				{% for comment in works.comment.all %}
+				{% for comment in posts.comments.all %}
 					{% if comment.parent == None %}
 					<div class="comment-box__inner">
 						<svg class="avatar avatar--60" viewBox="0 0 84 84">
