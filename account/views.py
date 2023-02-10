@@ -37,7 +37,7 @@ class RegisterationView(LoginRequirdMixins , FormView):
             return redirect(reverse('home:main'))
         else:
             cd = form.cleaned_data
-            user = User.objects.create_user(username = cd['username'] , email = cd['email'])
+            user = User.objects.create_user(username = cd['username'] , email = cd['email'] , password = cd['password'])
             login(self.request , user)
             return redirect(reverse_lazy('home:main'))
 

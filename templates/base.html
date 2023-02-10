@@ -144,6 +144,7 @@
 {% if request.user.is_authenticated == True %}
 <a href="{% url 'account:logout' %}"><button class="btn btn-danger" style="position: relative;left:-2.5em;">خروج</button></a>
 {% else %}
+<a href="{% url 'account:login' %}"><button class="btn btn-danger" style="position: relative;left:-2.5em;top:8em;">ورود</button></a>
 <a href="{% url 'account:register' %}"><button class="btn btn-danger" style="position: relative;left:-2.5em;">ثبت نام</button></a>
 {% endif %}
 </div>
