@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+تماس با من
+{% endblock %}
+{% block content %}
+<div class="col-12 col-md-12 col-lg-10">
+    <div class="box box-content">
+        <div class="pb-2">
+            <h1 class="title title--h1 first-title title__separate">تماس با من</h1>
+        </div>
+
+        <!-- Contact -->
+        <h2 class="title title--h3">نظرات شما درباره ی من :</h2>
+            
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="form-group col-12 col-md-6">
+                    {{form.username}}
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    {{form.email}}
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group col-12 col-md-12">
+                    {{form.message}}
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <button class="btn btn-block" id="btn" type="submit">ارسال</button>
+            <div class="row">
+                <div class="col-12 col-md-6 order-2 order-md-1 text-center text-md-left">
+                    <div id="validator-contact" class="hidden"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

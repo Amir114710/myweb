@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import About , Activity
 from account.models import User , Profile
+from contactus.models import Contact
 
 class TestView(TemplateView):
     template_name = "home_app/index.html"
@@ -11,5 +12,6 @@ class TestView(TemplateView):
         context['about'] = About.objects.all()
         context['activity'] = Activity.objects.all()
         context['user'] = Profile.objects.all()
+        context['contact'] = Contact.objects.all()
         return context
 

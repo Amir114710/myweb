@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'resume',
     'works',
     'blog',
+    'contactus',
     #my packages:
     'star_ratings',
     'django_cleanup',
